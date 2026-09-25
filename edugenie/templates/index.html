@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EduGenie — AI Learning Assistant</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/style.css') }}"
+    >
+</head>
+
+
+<body>
+
+    <!-- Soft background decorations -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+    <div class="background-shape shape-three"></div>
+
+
+    <main class="app-shell">
+
+        <!-- ==================================================
+             NAVBAR
+        =================================================== -->
+
+        <nav class="navbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✦
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        EduGenie
+                    </div>
+
+                    <div class="brand-caption">
+                        AI Learning Assistant
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="navbar-badge">
+
+                <span class="online-dot"></span>
+
+                AI Ready
+
+            </div>
+
+        </nav>
+
+
+        <!-- ==================================================
+             HERO
+        =================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-pill">
+                    <span>✦</span>
+                    Learn smarter with AI
+                </div>
+
+
+                <h1>
+                    Your personal
+                    <span>AI learning</span>
+                    companion.
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Ask questions, understand difficult concepts,
+                    generate quizzes, summarize your notes,
+                    and create personalized learning paths.
+
+                </p>
+
+            </div>
+
+
+            <div class="hero-decoration">
+
+                <div class="floating-card card-a">
+                    <span>💡</span>
+                    Learn
+                </div>
+
+                <div class="floating-card card-b">
+                    <span>🧠</span>
+                    Understand
+                </div>
+
+                <div class="floating-card card-c">
+                    <span>🚀</span>
+                    Grow
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             WORKSPACE
+        =================================================== -->
+
+        <section class="workspace">
+
+
+            <!-- INPUT PANEL -->
+
+            <div class="input-panel">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        ✨
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            What would you like to learn?
+                        </h2>
+
+                        <p>
+                            Choose a learning tool and let EduGenie help.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TASK -->
+
+                <div class="form-group">
+
+                    <label for="task">
+                        Learning tool
+                    </label>
+
+                    <div class="select-wrapper">
+
+                        <select id="task">
+
+                            <option value="qa">
+                                💬 Ask a Question
+                            </option>
+
+                            <option value="explain">
+                                💡 Explain a Topic
+                            </option>
+
+                            <option value="quiz">
+                                📝 Generate Quiz
+                            </option>
+
+                            <option value="summarize">
+                                📚 Summarize Text
+                            </option>
+
+                            <option value="learn">
+                                🗺️ Create Learning Path
+                            </option>
+
+                        </select>
+
+                        <span class="select-arrow">
+                            ⌄
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DYNAMIC INPUTS -->
+
+                <div id="dynamicFields"></div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    id="submitBtn"
+                    class="generate-btn"
+                    type="button"
+                >
+
+                    <span class="btn-sparkle">
+                        ✦
+                    </span>
+
+                    <span>
+                        Generate with EduGenie
+                    </span>
+
+                    <span class="btn-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <div class="privacy-note">
+
+                    <span>🔒</span>
+
+                    Your learning content stays private.
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT PANEL -->
+
+            <div class="result-panel">
+
+                <div class="result-topbar">
+
+                    <div class="result-title">
+
+                        <div class="result-icon">
+                            ✨
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Your learning result
+                            </h2>
+
+                            <p>
+                                AI-generated response
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-actions">
+
+                        <div
+                            id="statusBadge"
+                            class="status-badge"
+                        >
+
+                            <span></span>
+                            Ready
+
+                        </div>
+
+
+                        <button
+                            id="copyBtn"
+                            class="copy-btn"
+                            type="button"
+                        >
+
+                            <span>
+                                ⧉
+                            </span>
+
+                            Copy
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="result"
+                    class="result-area"
+                    aria-live="polite"
+                >
+
+                    <div class="empty-result">
+
+                        <div class="empty-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            Ready when you are
+                        </h3>
+
+                        <p>
+                            Select a learning tool, enter your content,
+                            and your AI-generated result will appear here.
+                        </p>
+
+                        <div class="suggestion-row">
+
+                            <span>Ask</span>
+                            <span>Explain</span>
+                            <span>Quiz</span>
+                            <span>Summarize</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FEATURE CARDS
+        =================================================== -->
+
+        <section class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+                    💬
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ask anything
+                    </h3>
+
+                    <p>
+                        Get clear, student-friendly answers
+                        to your questions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+                    🧠
+                </div>
+
+                <div>
+
+                    <h3>
+                        Understand better
+                    </h3>
+
+                    <p>
+                        Turn complicated concepts into
+                        simple explanations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon peach">
+                    📝
+                </div>
+
+                <div>
+
+                    <h3>
+                        Practice smarter
+                    </h3>
+
+                    <p>
+                        Generate quizzes and reinforce
+                        what you have learned.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+                    🗺️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Learn your way
+                    </h3>
+
+                    <p>
+                        Build a personalized roadmap
+                        for your learning goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FOOTER
+        =================================================== -->
+
+        <footer>
+
+            <span>
+                EduGenie
+            </span>
+
+            <span class="footer-dot">
+                •
+            </span>
+
+            <span>
+                Powered by Generative AI
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', path='js/app.js') }}"
+    ></script>
+
+</body>
+
+</html>
